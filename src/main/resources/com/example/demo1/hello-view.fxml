@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.Controller">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+    </padding>
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
+      <children>
+         <Label fx:id="mainLabel" layoutX="91.0" layoutY="14.0" text="AthleteWear" textAlignment="CENTER" textFill="#e8a735">
+            <font>
+               <Font name="MV Boli" size="37.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+    <Button fx:id="logInButton" prefHeight="26.0" prefWidth="109.0" text="Log In" />
+   <Label fx:id="signUpLabel" text="Don't have an account already?" />
+   <Button fx:id="signUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Sign up" />
+   <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
+      <children>
+         <Label fx:id="appLabel" layoutX="132.0" layoutY="32.0" text="AW Shop Manager 1.2.2" textFill="#e8a735">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+         <Label fx:id="copyrightLabel" layoutX="128.0" layoutY="68.0" text="All rights reserved ©2022" textFill="#e8a735">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Label>
+      </children>
+   </AnchorPane>
+</VBox>
