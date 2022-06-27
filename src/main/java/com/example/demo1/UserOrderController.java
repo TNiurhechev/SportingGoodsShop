@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -28,6 +29,9 @@ public class UserOrderController {
     private Label copyrightLabel;
 
     @FXML
+    private Label errorLabel;
+
+    @FXML
     private Label mainLabel;
 
     @FXML
@@ -37,20 +41,29 @@ public class UserOrderController {
     private Label nameLabel;
 
     @FXML
-    private Label errorLabel;
+    private Label vendorCodeLabel;
 
     @FXML
-    private TextField vendorCodeField;
+    private ListView<Integer> vendorCodeListView;
+
+    private Integer[] vendorCodes;
 
     @FXML
     void initialize() throws SQLException {
         errorLabel.setVisible(false);
+        GoodDAO gd = new GoodDAO();
+        List<Good> goods = gd.getAll();
+        vendorCodes = new Integer[goods.size()];
+        int index = 0;
+        for(Good g:goods){
+            vendorCodes[index] = g.getVendorCode();
+            index++;
+        }
+        vendorCodeListView.getItems().addAll(vendorCodes);
         confirmButton.setOnAction(event->{
-            GoodDAO gd = new GoodDAO();
-            List<Good> goods = gd.getAll();
             boolean check = false;
             for(Good g:goods){
-                if(g.getVendorCode()==Integer.parseInt(vendorCodeField.getText())){
+                if(g.getVendorCode()==Integer.parseInt(vendorCodeListView.getSelectionModel().getSelectedItem().toString())){
                     Good selected = g;
                     check = true;
                     OrderDao od = new OrderDao();

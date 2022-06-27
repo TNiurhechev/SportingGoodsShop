@@ -2,6 +2,7 @@ package db;
 
 import javafx.scene.image.Image;
 
+import java.io.FileInputStream;
 import java.sql.Blob;
 
 public class Good {
@@ -10,9 +11,9 @@ public class Good {
     String model;
     int size;
     int price;
-    Blob image;//BLOB
+    FileInputStream image;//BLOB
 
-    public Good(int vendorCode, String manufacturer, String model, int size, int price, Blob image) {
+    public Good(int vendorCode, String manufacturer, String model, int size, int price, FileInputStream image) {
         this.vendorCode = vendorCode;
         this.manufacturer = manufacturer;
         this.model = model;
@@ -50,7 +51,7 @@ public class Good {
         return price;
     }
 
-    public Blob getImage() {
+    public FileInputStream getImage() {
         return image;
     }
 }

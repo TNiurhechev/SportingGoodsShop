@@ -3,6 +3,7 @@ package com.example.demo1;
 import db.Good;
 import db.GoodDAO;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +14,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 public class AdminMainController {
@@ -47,6 +52,9 @@ public class AdminMainController {
     private Button ordersButton;
 
     @FXML
+    private ImageView productImage;
+
+    @FXML
     private TableColumn<Good, Integer> priceColumn;
 
     @FXML
@@ -56,7 +64,7 @@ public class AdminMainController {
     private TableColumn<Good, Integer> vendorCodeColumn;
 
     @FXML
-    void initialize(){
+    void initialize() throws SQLException, IOException {
         vendorCodeColumn.setCellValueFactory(new PropertyValueFactory<Good, Integer>("vendorCode"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("manufacturer"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("model"));
@@ -68,6 +76,39 @@ public class AdminMainController {
         for(Good g:l)
             ol.add(g);
         goodsTable.setItems(ol);
+
+        //image
+        Good first = l.get(0);
+        Image prodImg = gd.getProductImage(first.getVendorCode());
+        productImage.setImage(prodImg);
+        productImage.setPreserveRatio(false);
+        productImage.setVisible(true);
+
+        //table selection listener
+        ObservableList<Good> selectedItems =
+                goodsTable.getSelectionModel().getSelectedItems();
+
+        selectedItems.addListener(
+                new ListChangeListener<Good>() {
+                    @Override
+                    public void onChanged(
+                            Change<? extends Good> change) {
+                        //int index = goodsTable.getSelectionModel().selectedIndexProperty().get();
+                        Good selectedGood =  goodsTable.getSelectionModel().selectedItemProperty().get();
+                        Image prodImg = null;
+                        try {
+                            prodImg = gd.getProductImage(selectedGood.getVendorCode());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        productImage.setImage(prodImg);
+                        productImage.setPreserveRatio(false);
+                        productImage.setVisible(true);
+                    }
+                });
+
         addAdminButton.setOnAction(event->{
             Stage primaryStage = (Stage)addAdminButton.getScene().getWindow();
             try{

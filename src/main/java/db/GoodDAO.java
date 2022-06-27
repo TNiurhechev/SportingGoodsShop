@@ -1,7 +1,9 @@
 package db;
 
+import com.example.demo1.UserMainController;
 import javafx.scene.image.Image;
 
+import java.io.*;
 import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,8 +38,7 @@ public class GoodDAO implements DAO{
                 String model = goodsSet.getString("Model");
                 int size = goodsSet.getInt("Size");
                 int price = goodsSet.getInt("Price");
-                Blob image = goodsSet.getBlob("Image");
-                Good g = new Good(vendorCode,manufacturer,model,size,price,image);
+                Good g = new Good(vendorCode,manufacturer,model,size,price,null);
                 if(goodId==id)
                     return g;
             }
@@ -66,8 +67,7 @@ public class GoodDAO implements DAO{
                 String model = goodsSet.getString("Model");
                 int size = goodsSet.getInt("Size");
                 int price = goodsSet.getInt("Price");
-                Blob image = goodsSet.getBlob("Image");
-                goods.add(new Good(vendorCode,manufacturer,model,size,price,image));
+                goods.add(new Good(vendorCode,manufacturer,model,size,price,null));
             }
             return goods;
         } catch (SQLException e) {
@@ -100,7 +100,7 @@ public class GoodDAO implements DAO{
         insertGood.setString(3,g.getModel());
         insertGood.setInt(4,g.getSize());
         insertGood.setInt(5,g.getPrice());
-        insertGood.setBlob(6, (Blob) g.getImage());
+        insertGood.setBinaryStream(6, g.getImage());
         insertGood.executeUpdate();
     }
 
@@ -143,5 +143,38 @@ public class GoodDAO implements DAO{
                 " WHERE VendorCode=?");
         deleteGood.setInt(1,g.getVendorCode());
         deleteGood.executeUpdate();
+    }
+
+    public Image getProductImage(int vendorCode) throws SQLException, IOException {
+        Connection connection = getConnection();
+        try {
+            Statement statement = connection.createStatement();
+            statement.execute("CREATE TABLE if NOT EXISTS Goods("
+                    + "Id INTEGER PRIMARY KEY auto_increment, "
+                    + "VendorCode INTEGER, Manufacturer VARCHAR(100),"
+                    + "Model VARCHAR(100), Size INTEGER, "
+                    + "Price INTEGER, Image BLOB);");
+
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        PreparedStatement getImage = connection.prepareStatement("SELECT Image from Goods WHERE VendorCode=?");
+        getImage.setInt(1,vendorCode);
+        ResultSet rs = getImage.executeQuery();
+        if(rs.next()){
+            InputStream is = rs.getBinaryStream(1);
+            OutputStream os = new FileOutputStream(new File("photo.jpg"));
+            byte[] contents = new byte[2048];
+            int size = 0;
+            while((size = is.read(contents))!=-1){
+                os.write(contents,0,size);
+            }
+            os.close();
+            is.close();
+            Image img = new Image("file:photo.jpg",200,150,true,true);
+            return img;
+        }
+        throw new IOException("");
     }
 }

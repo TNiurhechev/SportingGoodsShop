@@ -17,9 +17,12 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
@@ -55,13 +58,17 @@ public class UserMainController {
     private TableColumn<Good, Integer> vendorCodeColumn;
 
     @FXML
+    private ImageView productImage;
+
+
+    @FXML
     private Button orderButton;
 
     @FXML
     private Button logOutButton;
 
     @FXML
-    void initialize(){
+    void initialize() throws SQLException, IOException {
         vendorCodeColumn.setCellValueFactory(new PropertyValueFactory<Good, Integer>("vendorCode"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("manufacturer"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("model"));
@@ -73,6 +80,39 @@ public class UserMainController {
         for(Good g:l)
             ol.add(g);
         goodsTable.setItems(ol);
+
+        //image
+        Good first = l.get(0);
+        Image prodImg = gd.getProductImage(first.getVendorCode());
+        productImage.setImage(prodImg);
+        productImage.setPreserveRatio(false);
+        productImage.setVisible(true);
+
+        //table selection listener
+        ObservableList<Good> selectedItems =
+                goodsTable.getSelectionModel().getSelectedItems();
+
+        selectedItems.addListener(
+                new ListChangeListener<Good>() {
+                    @Override
+                    public void onChanged(
+                            Change<? extends Good> change) {
+                        //int index = goodsTable.getSelectionModel().selectedIndexProperty().get();
+                        Good selectedGood =  goodsTable.getSelectionModel().selectedItemProperty().get();
+                        Image prodImg = null;
+                        try {
+                            prodImg = gd.getProductImage(selectedGood.getVendorCode());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        productImage.setImage(prodImg);
+                        productImage.setPreserveRatio(false);
+                        productImage.setVisible(true);
+                    }
+                });
+
         orderButton.setOnAction(event->{
             Stage primaryStage = (Stage)logOutButton.getScene().getWindow();
             try{

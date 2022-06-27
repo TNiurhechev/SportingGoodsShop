@@ -10,8 +10,15 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
 
 public class AddProductController {
@@ -21,6 +28,9 @@ public class AddProductController {
 
     @FXML
     private Label appLabel;
+
+    @FXML
+    private Button browseButton;
 
     @FXML
     private Label copyrightLabel;
@@ -41,7 +51,19 @@ public class AddProductController {
     private TextField modelTextField;
 
     @FXML
+    private Label priceLabel;
+
+    @FXML
     private TextField priceTextField;
+
+    @FXML
+    private ImageView productImage;
+
+    @FXML
+    private Label imageLabel;
+
+    @FXML
+    private AnchorPane productPane;
 
     @FXML
     private Label sizeLabel;
@@ -55,13 +77,37 @@ public class AddProductController {
     @FXML
     private TextField vendorCodeTextField;
 
+    private FileChooser fc = new FileChooser();
+
+    private File imgFile;
+
+    private Image img;
+
+    private FileInputStream fis;
+
     @FXML
     void initialize(){
+
+        browseButton.setOnAction(event->{
+            Stage primaryStage = (Stage)browseButton.getScene().getWindow();
+            imgFile = fc.showOpenDialog(primaryStage);
+            if(imgFile!=null){
+                img = new Image(imgFile.toURI().toString(),200,150,true,true);
+                productImage.setImage(img);
+                try {
+                    fis = new FileInputStream(imgFile);
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         addProductButton.setOnAction(event->{
             GoodDAO gd = new GoodDAO();
             try {
                 gd.save(new Good(Integer.parseInt(vendorCodeTextField.getText()),manufacturerTextField.getText(),
-                        modelTextField.getText(),Integer.parseInt(sizeTextField.getText()),Integer.parseInt(vendorCodeTextField.getText())));
+                modelTextField.getText(),Integer.parseInt(sizeTextField.getText()),
+                Integer.parseInt(priceTextField.getText()),fis));
             } catch (SQLException e) {
                 e.printStackTrace();
             }
