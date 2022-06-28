@@ -40,6 +40,9 @@ public class AdminMainController {
     private TableView<Good> goodsTable;
 
     @FXML
+    private Button logOutButton;
+
+    @FXML
     private Label mainLabel;
 
     @FXML
@@ -141,6 +144,21 @@ public class AdminMainController {
             Stage primaryStage = (Stage)ordersButton.getScene().getWindow();
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-order.fxml"));
+                Parent root = (Parent)loader.load();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+                primaryStage.hide();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
+        logOutButton.setOnAction(event->{
+            Stage primaryStage = (Stage)logOutButton.getScene().getWindow();
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));

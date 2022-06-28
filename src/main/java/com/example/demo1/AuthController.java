@@ -69,7 +69,7 @@ public class AuthController {
             if(passwordField.getText().equals(passwordConfirmField.getText())) {
                 List<User> userList = ud.getAll();
                 for (User u : userList) {
-                    if (u.getNickname() == nicknameTextField.getText()) {
+                    if (u.getNickname().equals(nicknameTextField.getText())) {
                         errorLabel.setText("This nickname is taken!");
                         errorLabel.setVisible(true);
                         check = true;

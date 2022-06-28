@@ -42,17 +42,22 @@
    <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <children>
-         <Button fx:id="addAdminButton" layoutX="157.0" mnemonicParsing="false" text="Add administrator">
+         <Button fx:id="addAdminButton" layoutX="125.0" layoutY="1.0" mnemonicParsing="false" text="Add administrator">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="addProductButton" layoutX="336.0" layoutY="1.0" mnemonicParsing="false" text="Add product">
+         <Button fx:id="addProductButton" layoutX="311.0" layoutY="1.0" mnemonicParsing="false" text="Add product">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="ordersButton" layoutX="510.0" mnemonicParsing="false" text="Orders">
+         <Button fx:id="ordersButton" layoutX="452.0" layoutY="1.0" mnemonicParsing="false" text="Orders">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+         <Button fx:id="logOutButton" layoutX="578.0" layoutY="1.0" mnemonicParsing="false" text="Log out">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
