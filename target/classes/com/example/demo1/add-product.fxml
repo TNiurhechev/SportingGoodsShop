@@ -36,33 +36,33 @@
                   <Font name="System Bold" size="16.0" />
               </font>
           </Label>
-          <TextField fx:id="vendorCodeTextField" layoutX="10.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+          <TextField fx:id="vendorCodeTextField" layoutX="10.0" layoutY="37.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10;" />
           <Label fx:id="manufacturerLabel" layoutX="189.0" layoutY="1.0" text="Manufacturer">
               <font>
                   <Font name="System Bold" size="16.0" />
               </font>
           </Label>
-         <TextField fx:id="manufacturerTextField" layoutX="188.0" layoutY="37.0" maxWidth="-Infinity" />
+         <TextField fx:id="manufacturerTextField" layoutX="188.0" layoutY="37.0" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
           <Label fx:id="modelLabel" layoutX="13.0" layoutY="70.0" text="Model">
               <font>
                   <Font name="System Bold" size="16.0" />
               </font>
           </Label>
-         <TextField fx:id="modelTextField" layoutX="10.0" layoutY="96.0" maxWidth="-Infinity" />
+         <TextField fx:id="modelTextField" layoutX="10.0" layoutY="96.0" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
          <Label fx:id="sizeLabel" layoutX="189.0" layoutY="70.0" text="Size">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="sizeTextField" layoutX="189.0" layoutY="96.0" maxWidth="-Infinity" />
+         <TextField fx:id="sizeTextField" layoutX="189.0" layoutY="96.0" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
          <Label fx:id="priceLabel" layoutX="10.0" layoutY="132.0" text="Price">
             <font>
                <Font name="System Bold" size="16.0" />
             </font>
          </Label>
-         <TextField fx:id="priceTextField" layoutX="10.0" layoutY="164.0" maxWidth="-Infinity" />
-          <Button fx:id="addProductButton" layoutX="72.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Add" />
-         <Button fx:id="browseButton" layoutX="236.0" layoutY="308.0" mnemonicParsing="false" text="Browse" />
+         <TextField fx:id="priceTextField" layoutX="10.0" layoutY="164.0" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
+          <Button fx:id="addProductButton" layoutX="86.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-radius: 50;" text="Add" />
+         <Button fx:id="browseButton" layoutX="236.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 50;" text="Browse" />
          <Label fx:id="imageLabel" layoutX="189.0" layoutY="132.0" text="Image">
             <font>
                <Font name="System Bold" size="16.0" />

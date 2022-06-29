@@ -81,7 +81,7 @@ public class AuthController {
                         ud.save(new User(nicknameTextField.getText(), passwordField.getText(), 0));
                         Stage primaryStage = (Stage)signInButton.getScene().getWindow();
                         try{
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("user-main.fxml"));
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
                             Parent root = (Parent)loader.load();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(root));

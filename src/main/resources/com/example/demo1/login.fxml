@@ -27,14 +27,14 @@
          <Font name="System Bold" size="16.0" />
       </font>
    </Label>
-   <TextField fx:id="nicknameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+   <TextField fx:id="nicknameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10;" />
    <Label text="Password">
       <font>
          <Font name="System Bold" size="16.0" />
       </font>
    </Label>
-   <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
-        <Button fx:id="signInButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Sign in" />
+   <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10;" />
+        <Button fx:id="signInButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-radius: 50;" text="Sign in" />
    <Label fx:id="loginErrorLabel" text="Incorrect login or password!" textFill="RED">
       <font>
          <Font name="System Bold" size="16.0" />

@@ -42,10 +42,10 @@
          <Font name="System Bold" size="12.0" />
       </font>
    </Label>
-   <TextField fx:id="customerTextField" maxWidth="-Infinity" />
+   <TextField fx:id="customerTextField" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
         <children>
-            <Button fx:id="removeOrderButton" layoutX="248.0" layoutY="1.0" mnemonicParsing="false" text="Remove">
+            <Button fx:id="removeOrderButton" layoutX="244.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Remove">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
