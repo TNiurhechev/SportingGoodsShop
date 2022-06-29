@@ -20,9 +20,9 @@
          </Label>
       </children>
    </AnchorPane>
-    <Button fx:id="logInButton" prefHeight="26.0" prefWidth="109.0" text="Log In" />
+    <Button fx:id="logInButton" prefHeight="26.0" prefWidth="109.0" style="-fx-background-radius: 50;" text="Log In" />
    <Label fx:id="signUpLabel" text="Don't have an account already?" />
-   <Button fx:id="signUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" text="Sign up" />
+   <Button fx:id="signUpButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-radius: 50;" text="Sign up" />
    <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
       <children>
          <Label fx:id="appLabel" layoutX="132.0" layoutY="32.0" text="AW Shop Manager 1.2.2" textFill="#e8a735">
