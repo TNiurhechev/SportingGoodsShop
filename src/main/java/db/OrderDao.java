@@ -25,12 +25,12 @@ public class OrderDao implements DAO{
             ResultSet ordersSet = statement.executeQuery("SELECT * FROM Orders;");
 
             while(ordersSet.next()) {
-                int orserId = ordersSet.getInt("Id");
+                int orderId = ordersSet.getInt("Id");
                 String customer = ordersSet.getString("Customer");
                 int vendorCode = ordersSet.getInt("VendorCode");
                 int price = ordersSet.getInt("Price");
-                Order ord = new Order(customer,vendorCode,price);
-                if(orserId==id)
+                Order ord = new Order(orderId,customer,vendorCode,price);
+                if(orderId==id)
                     return ord;
             }
         } catch (SQLException e) {
@@ -55,7 +55,7 @@ public class OrderDao implements DAO{
                 String customer = ordersSet.getString("Customer");
                 int vendorCode = ordersSet.getInt("VendorCode");
                 int price = ordersSet.getInt("Price");
-                orders.add(new Order(customer,vendorCode,price));
+                orders.add(new Order(orderId,customer,vendorCode,price));
             }
             return orders;
         } catch (SQLException e) {
@@ -118,8 +118,8 @@ public class OrderDao implements DAO{
         }
         Order ord = (Order)o;
         PreparedStatement deleteOrder = connection.prepareStatement("DELETE FROM Orders" +
-                " WHERE Customer=?");
-        deleteOrder.setString(1,ord.getCustomer());
+                " WHERE Id=?");
+        deleteOrder.setInt(1,ord.getId());
         deleteOrder.executeUpdate();
     }
 }

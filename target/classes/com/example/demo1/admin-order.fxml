@@ -5,7 +5,6 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -17,7 +16,7 @@
 
 </AnchorPane>-->
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="545.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AdminOrderController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="505.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AdminOrderController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -30,26 +29,31 @@
             </Label>
         </children>
     </AnchorPane>
-    <TableView fx:id="ordersTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
-        <columns>
-            <TableColumn fx:id="vendorCodeColumn" prefWidth="111.99999845027924" text="Vendor code" />
-            <TableColumn fx:id="customerColumn" prefWidth="268.7999954223633" text="Customer" />
-            <TableColumn fx:id="priceColumn" prefWidth="116.7999267578125" text="Price" />
-        </columns>
-    </TableView>
-   <Label fx:id="customerLabel" text="Enter customer`s name">
+   <Label fx:id="orderInfoLabel" text="Select an order to remove">
       <font>
-         <Font name="System Bold" size="12.0" />
+         <Font name="System Bold" size="14.0" />
       </font>
    </Label>
-   <TextField fx:id="customerTextField" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
+    <TableView fx:id="ordersTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
+        <columns>
+            <TableColumn fx:id="idColumn" prefWidth="41.599974036216736" text="ID" />
+            <TableColumn fx:id="vendorCodeColumn" prefWidth="122.40003204345703" text="Vendor code" />
+            <TableColumn fx:id="customerColumn" prefWidth="242.4000244140625" text="Customer" />
+         <TableColumn fx:id="priceColumn" prefWidth="93.5999755859375" text="Price" />
+        </columns>
+    </TableView>
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
         <children>
-            <Button fx:id="removeOrderButton" layoutX="244.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Remove">
+            <Button fx:id="removeOrderButton" layoutX="161.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Remove">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Button>
+         <Button fx:id="returnButton" layoutX="334.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Back">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
         </children>
     </AnchorPane>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="600.0" style="-fx-background-color: #c8000a;">
