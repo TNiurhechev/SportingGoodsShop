@@ -138,7 +138,7 @@ public class UserMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle(primaryStage.getTitle());
+                stage.setTitle("AW Shop Manager 1.2.2");
                 stage.show();
                 primaryStage.hide();
             }

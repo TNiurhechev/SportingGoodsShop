@@ -53,7 +53,7 @@ public class LogInController {
                 if (u.getNickname().equals(nicknameTextField.getText())) {
                     if (u.getPassword().equals(password.getText())) {
                         Stage primaryStage = (Stage)signInButton.getScene().getWindow();
-                        if (u.getIsAdmin() == 1||u.getNickname().equals("admin")) {
+                        if (u.getIsAdmin() == 1) {
                             try{
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                                 Parent root = (Parent)loader.load();
