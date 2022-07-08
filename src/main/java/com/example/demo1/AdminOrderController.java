@@ -98,6 +98,7 @@ public class AdminOrderController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
                 stage.show();
                 primaryStage.hide();
             }
@@ -130,6 +131,7 @@ public class AdminOrderController {
                             Parent root = (Parent)loader.load();
                             Stage stage = new Stage();
                             stage.setScene(new Scene(root));
+                            stage.setTitle(primaryStage.getTitle());
                             stage.show();
                             primaryStage.hide();
                         }

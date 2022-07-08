@@ -66,8 +66,11 @@ public class AdminMainController {
     @FXML
     private TableColumn<Good, Integer> vendorCodeColumn;
 
+
+
     @FXML
     void initialize() throws SQLException, IOException {
+
         vendorCodeColumn.setCellValueFactory(new PropertyValueFactory<Good, Integer>("vendorCode"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("manufacturer"));
         modelColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("model"));
@@ -119,6 +122,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
                 stage.show();
                 primaryStage.hide();
             }
@@ -133,6 +137,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
                 stage.show();
                 primaryStage.hide();
             }
@@ -147,6 +152,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
                 stage.show();
                 primaryStage.hide();
             }
@@ -162,6 +168,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
+                stage.setTitle("AW Shop Manager 1.2.2");
                 stage.show();
                 primaryStage.hide();
             }
@@ -170,6 +177,5 @@ public class AdminMainController {
             }
         });
     }
-
 }
 
