@@ -77,6 +77,12 @@ public class AddProductController {
     @FXML
     private TextField vendorCodeTextField;
 
+    @FXML
+    private Label logLabel;
+
+    @FXML
+    private Label nicknameLabel1;
+
     private FileChooser fc = new FileChooser();
 
     private File imgFile;
@@ -84,6 +90,10 @@ public class AddProductController {
     private Image img;
 
     private FileInputStream fis;
+
+    public void setNickname(String nickname){
+        nicknameLabel1.setText(nickname);
+    }
 
     @FXML
     void initialize(){
@@ -115,6 +125,8 @@ public class AddProductController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                 Parent root = (Parent)loader.load();
+                AdminMainController adminMainController = loader.getController();
+                adminMainController.setNickname(nicknameLabel1.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());

@@ -21,15 +21,17 @@ public class OrderDao implements DAO{
             statement.execute("CREATE TABLE if NOT EXISTS Orders("
                     + "Id INTEGER PRIMARY KEY auto_increment, "
                     + "Customer VARCHAR(100),"
+                    + "Address VARCHAR(100),"
                     + "VendorCode INTEGER, Price INTEGER);");
             ResultSet ordersSet = statement.executeQuery("SELECT * FROM Orders;");
 
             while(ordersSet.next()) {
                 int orderId = ordersSet.getInt("Id");
                 String customer = ordersSet.getString("Customer");
+                String address = ordersSet.getString("Address");
                 int vendorCode = ordersSet.getInt("VendorCode");
                 int price = ordersSet.getInt("Price");
-                Order ord = new Order(orderId,customer,vendorCode,price);
+                Order ord = new Order(orderId,customer,address,vendorCode,price);
                 if(orderId==id)
                     return ord;
             }
@@ -47,15 +49,17 @@ public class OrderDao implements DAO{
             statement.execute("CREATE TABLE if NOT EXISTS Orders("
                     + "Id INTEGER PRIMARY KEY auto_increment, "
                     + "Customer VARCHAR(100),"
+                    + "Address VARCHAR(100),"
                     + "VendorCode INTEGER, Price INTEGER);");
             ResultSet ordersSet = statement.executeQuery("SELECT * FROM Orders;");
             List<Order> orders = new ArrayList<Order>();
             while(ordersSet.next()) {
                 int orderId = ordersSet.getInt("Id");
                 String customer = ordersSet.getString("Customer");
+                String address = ordersSet.getString("Address");
                 int vendorCode = ordersSet.getInt("VendorCode");
                 int price = ordersSet.getInt("Price");
-                orders.add(new Order(orderId,customer,vendorCode,price));
+                orders.add(new Order(orderId,customer,address,vendorCode,price));
             }
             return orders;
         } catch (SQLException e) {
@@ -72,6 +76,7 @@ public class OrderDao implements DAO{
             statement.execute("CREATE TABLE if NOT EXISTS Orders("
                     + "Id INTEGER PRIMARY KEY auto_increment, "
                     + "Customer VARCHAR(100),"
+                    + "Address VARCHAR(100),"
                     + "VendorCode INTEGER, Price INTEGER);");
         }
         catch(SQLException e){
@@ -79,10 +84,11 @@ public class OrderDao implements DAO{
         }
         Order ord = (Order)o;
         PreparedStatement insertOrder = connection.prepareStatement("INSERT INTO " +
-                "Orders(Customer,VendorCode,Price) VALUES (?,?,?)");
+                "Orders(Customer,Address,VendorCode,Price) VALUES (?,?,?,?)");
         insertOrder.setString(1,ord.getCustomer());
-        insertOrder.setInt(2,ord.getVendorCode());
-        insertOrder.setInt(3,ord.getPrice());
+        insertOrder.setString(2,ord.getAddress());
+        insertOrder.setInt(3,ord.getVendorCode());
+        insertOrder.setInt(4,ord.getPrice());
         insertOrder.executeUpdate();
     }
 
@@ -94,6 +100,7 @@ public class OrderDao implements DAO{
             statement.execute("CREATE TABLE if NOT EXISTS Orders("
                     + "Id INTEGER PRIMARY KEY auto_increment, "
                     + "Customer VARCHAR(100),"
+                    + "Address VARCHAR(100),"
                     + "VendorCode INTEGER, Price INTEGER);");
         }
         catch(SQLException e){
@@ -111,6 +118,7 @@ public class OrderDao implements DAO{
             statement.execute("CREATE TABLE if NOT EXISTS Orders("
                     + "Id INTEGER PRIMARY KEY auto_increment, "
                     + "Customer VARCHAR(100),"
+                    + "Address VARCHAR(100),"
                     + "VendorCode INTEGER, Price INTEGER);");
         }
         catch(SQLException e){

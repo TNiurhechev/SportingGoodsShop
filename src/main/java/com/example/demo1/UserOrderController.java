@@ -12,6 +12,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
@@ -20,75 +23,136 @@ import java.util.List;
 public class UserOrderController {
 
     @FXML
-    private Label appLabel;
+    private Label addressLabel;
 
     @FXML
-    private Button confirmButton;
+    private TextField addressTextField;
+
+    @FXML
+    private Label appLabel;
 
     @FXML
     private Label copyrightLabel;
 
     @FXML
-    private Label errorLabel;
+    private Label imageLabel;
 
     @FXML
     private Label mainLabel;
 
     @FXML
-    private TextField nameField;
+    private Label manufacturerLabel;
 
     @FXML
-    private Label nameLabel;
+    private Label manufacturerValueLabel;
+
+    @FXML
+    private Label modelLabel;
+
+    @FXML
+    private Label modelValueLabel;
+
+    @FXML
+    private Button orderButton;
+
+    @FXML
+    private Label priceLabel;
+
+    @FXML
+    private Label priceValueLabel;
+
+    @FXML
+    private ImageView productImage;
+
+    @FXML
+    private AnchorPane productPane;
+
+    @FXML
+    private Button returnButton;
+
+    @FXML
+    private Label sizeLabel;
+
+    @FXML
+    private Label sizeValueLabel;
 
     @FXML
     private Label vendorCodeLabel;
 
     @FXML
-    private ListView<Integer> vendorCodeListView;
+    private Label vendorCodeValueLabel;
 
-    private Integer[] vendorCodes;
+    @FXML
+    private Label nicknameLabel;
+
+    @FXML
+    private Label logLabel;
+
+    private Good selectedGood;
+
+    private Image selectedImage;
+
+    public void setNickname(String nickname){
+        nicknameLabel.setText(nickname);
+    }
+
+    public void setSelectedGood(int vendorCode, String manufacturer, String model, int size, int price){
+        selectedGood = new Good(vendorCode, manufacturer, model, size, price);
+        this.vendorCodeValueLabel.setText(String.valueOf(selectedGood.getVendorCode()));
+        this.manufacturerValueLabel.setText(selectedGood.getManufacturer());
+        this.modelValueLabel.setText(selectedGood.getModel());
+        this.sizeValueLabel.setText(String.valueOf(selectedGood.getSize()));
+        this.priceValueLabel.setText(String.valueOf(selectedGood.getPrice()));
+    }
+
+    public void setSelectedImage(Image image) {
+        this.selectedImage = image;
+        this.productImage.setImage(selectedImage);
+    }
 
     @FXML
     void initialize() throws SQLException {
-        errorLabel.setVisible(false);
-        GoodDAO gd = new GoodDAO();
-        List<Good> goods = gd.getAll();
-        vendorCodes = new Integer[goods.size()];
-        int index = 0;
-        for(Good g:goods){
-            vendorCodes[index] = g.getVendorCode();
-            index++;
-        }
-        vendorCodeListView.getItems().addAll(vendorCodes);
-        confirmButton.setOnAction(event->{
-            boolean check = false;
-            for(Good g:goods){
-                if(g.getVendorCode()==Integer.parseInt(vendorCodeListView.getSelectionModel().getSelectedItem().toString())){
-                    Good selected = g;
-                    check = true;
-                    OrderDao od = new OrderDao();
-                    try {
-                        od.save(new Order(nameField.getText(), selected.getVendorCode(), selected.getPrice()));
-                        Stage primaryStage = (Stage)confirmButton.getScene().getWindow();
-                        try{
-                            FXMLLoader loader = new FXMLLoader(getClass().getResource("user-main.fxml"));
-                            Parent root = (Parent)loader.load();
-                            Stage stage = new Stage();
-                            stage.setScene(new Scene(root));
-                            stage.setTitle(primaryStage.getTitle());
-                            stage.show();
-                            primaryStage.hide();
-                        }
-                        catch(Exception ex){
-                            ex.printStackTrace();
-                        }
-                    } catch (SQLException e) {
-                        e.printStackTrace();
-                    }
+
+        orderButton.setOnAction(event->{
+            OrderDao od = new OrderDao();
+            try {
+                od.save(new Order(nicknameLabel.getText(),addressTextField.getText(), selectedGood.getVendorCode(),
+                        selectedGood.getPrice()));
+                Stage primaryStage = (Stage)returnButton.getScene().getWindow();
+                try{
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("user-main.fxml"));
+                    Parent root = (Parent)loader.load();
+                    UserMainController userMainController = loader.getController();
+                    userMainController.setNickname(nicknameLabel.getText());
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle(primaryStage.getTitle());
+                    stage.show();
+                    primaryStage.hide();
                 }
+                catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-            if(check==false)
-                errorLabel.setVisible(true);
+        });
+        returnButton.setOnAction(event->{
+            Stage primaryStage = (Stage)returnButton.getScene().getWindow();
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("user-main.fxml"));
+                Parent root = (Parent)loader.load();
+                UserMainController userMainController = loader.getController();
+                userMainController.setNickname(nicknameLabel.getText());
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
+                stage.show();
+                primaryStage.hide();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
         });
     }
 

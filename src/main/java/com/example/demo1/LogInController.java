@@ -57,9 +57,11 @@ public class LogInController {
                             try{
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                                 Parent root = (Parent)loader.load();
+                                AdminMainController adminMainController = loader.getController();
+                                adminMainController.setNickname(nicknameTextField.getText());
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
-                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 1.2.2");
+                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 2.0.0");
                                 stage.show();
                                 primaryStage.hide();
                             }
@@ -70,9 +72,11 @@ public class LogInController {
                             try {
                                 FXMLLoader loader = new FXMLLoader(getClass().getResource("user-main.fxml"));
                                 Parent root = (Parent) loader.load();
+                                UserMainController userMainController = loader.getController();
+                                userMainController.setNickname(nicknameTextField.getText());
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
-                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 1.2.2");
+                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 2.0.0");
                                 stage.show();
                                 primaryStage.hide();
                             } catch (Exception ex) {

@@ -66,7 +66,15 @@ public class AdminMainController {
     @FXML
     private TableColumn<Good, Integer> vendorCodeColumn;
 
+    @FXML
+    private Label nicknameLabel;
 
+    @FXML
+    private Label logLabel;
+
+    public void setNickname(String nickname){
+        nicknameLabel.setText(nickname);
+    }
 
     @FXML
     void initialize() throws SQLException, IOException {
@@ -120,6 +128,8 @@ public class AdminMainController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("add-admin.fxml"));
                 Parent root = (Parent)loader.load();
+                AddAdminController addAdminController = loader.getController();
+                addAdminController.setNickname(nicknameLabel.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());
@@ -135,6 +145,8 @@ public class AdminMainController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("add-product.fxml"));
                 Parent root = (Parent)loader.load();
+                AddProductController addProductController = loader.getController();
+                addProductController.setNickname(nicknameLabel.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());
@@ -150,6 +162,8 @@ public class AdminMainController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-order.fxml"));
                 Parent root = (Parent)loader.load();
+                AdminOrderController adminOrderController = loader.getController();
+                adminOrderController.setNickname(nicknameLabel.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());
@@ -168,7 +182,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle("AW Shop Manager 1.2.2");
+                stage.setTitle("AW Shop Manager 2.0.0");
                 stage.show();
                 primaryStage.hide();
             }

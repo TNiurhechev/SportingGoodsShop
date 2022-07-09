@@ -51,6 +51,16 @@ public class AddAdminController {
     private Button signInButton;
 
     @FXML
+    private Label logLabel;
+
+    @FXML
+    private Label nicknameLabel1;
+
+    public void setNickname(String nickname){
+        nicknameLabel1.setText(nickname);
+    }
+
+    @FXML
     void initialize(){
         errorLabel.setVisible(false);
         signInButton.setOnAction(event->{
@@ -75,6 +85,8 @@ public class AddAdminController {
                     try{
                         FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                         Parent root = (Parent)loader.load();
+                        AdminMainController adminMainController = loader.getController();
+                        adminMainController.setNickname(nicknameLabel1.getText());
                         Stage stage = new Stage();
                         stage.setScene(new Scene(root));
                         stage.setTitle(primaryStage.getTitle());

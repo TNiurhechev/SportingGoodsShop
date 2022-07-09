@@ -11,7 +11,7 @@ public class Application extends javafx.application.Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("hello-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("AW Shop Manager 1.2.2");
+        stage.setTitle("AW Shop Manager 2.0.0");
         stage.setScene(scene);
         stage.show();
     }

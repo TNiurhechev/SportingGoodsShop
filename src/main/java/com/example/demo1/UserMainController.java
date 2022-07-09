@@ -71,6 +71,25 @@ public class UserMainController {
     private Button logOutButton;
 
     @FXML
+    private Label logLabel;
+
+    @FXML
+    private Label nicknameLabel;
+
+    @FXML
+    private Button userOrdersButton;
+
+    private Good selectedGood;
+
+    public void setNickname(String nickname){
+        nicknameLabel.setText(nickname);
+    }
+
+    public Image getSelectedImage() {
+        return productImage.getImage();
+    }
+
+    @FXML
     void initialize() throws SQLException, IOException {
         vendorCodeColumn.setCellValueFactory(new PropertyValueFactory<Good, Integer>("vendorCode"));
         manufacturerColumn.setCellValueFactory(new PropertyValueFactory<Good, String>("manufacturer"));
@@ -101,7 +120,7 @@ public class UserMainController {
                     public void onChanged(
                             Change<? extends Good> change) {
                         //int index = goodsTable.getSelectionModel().selectedIndexProperty().get();
-                        Good selectedGood =  goodsTable.getSelectionModel().selectedItemProperty().get();
+                        selectedGood =  goodsTable.getSelectionModel().selectedItemProperty().get();
                         Image prodImg = null;
                         try {
                             prodImg = gd.getProductImage(selectedGood.getVendorCode());
@@ -117,10 +136,15 @@ public class UserMainController {
                 });
 
         orderButton.setOnAction(event->{
-            Stage primaryStage = (Stage)logOutButton.getScene().getWindow();
+            Stage primaryStage = (Stage)orderButton.getScene().getWindow();
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("user-order.fxml"));
                 Parent root = (Parent)loader.load();
+                UserOrderController userOrderController = loader.getController();
+                userOrderController.setSelectedImage(getSelectedImage());
+                userOrderController.setSelectedGood(selectedGood.getVendorCode(), selectedGood.getManufacturer(),
+                        selectedGood.getModel(), selectedGood.getSize(), selectedGood.getPrice());
+                userOrderController.setNickname(nicknameLabel.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());
@@ -138,7 +162,25 @@ public class UserMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle("AW Shop Manager 1.2.2");
+                stage.setTitle("AW Shop Manager 2.0.0");
+                stage.show();
+                primaryStage.hide();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
+        userOrdersButton.setOnAction(event->{
+            Stage primaryStage = (Stage)logOutButton.getScene().getWindow();
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("user-orders.fxml"));
+                Parent root = (Parent)loader.load();
+                UserOrdersController userOrdersController = loader.getController();
+                userOrdersController.setNickname(nicknameLabel.getText());
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
                 stage.show();
                 primaryStage.hide();
             }

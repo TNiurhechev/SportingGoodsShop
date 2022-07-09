@@ -59,13 +59,27 @@ public class AdminOrderController {
     @FXML
     private TableColumn<Order, Integer> vendorCodeColumn;
 
+    @FXML
+    private TableColumn<Order, String> addressColumn;
+
+    @FXML
+    private Label nicknameLabel;
+
+    @FXML
+    private Label logLabel;
+
     private Order selectedOrder;
+
+    public void setNickname(String nickname){
+        nicknameLabel.setText(nickname);
+    }
 
     @FXML
     void initialize(){
         idColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("id"));
         vendorCodeColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("vendorCode"));
         customerColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("customer"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<Order, String>("address"));
         priceColumn.setCellValueFactory(new PropertyValueFactory<Order, Integer>("price"));
         OrderDao od = new OrderDao();
         List<Order> l = od.getAll();
@@ -96,6 +110,8 @@ public class AdminOrderController {
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                 Parent root = (Parent)loader.load();
+                AdminMainController adminMainController = loader.getController();
+                adminMainController.setNickname(nicknameLabel.getText());
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
                 stage.setTitle(primaryStage.getTitle());
@@ -129,6 +145,8 @@ public class AdminOrderController {
                         try{
                             FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                             Parent root = (Parent)loader.load();
+                            AdminMainController adminMainController = loader.getController();
+                            adminMainController.setNickname(nicknameLabel.getText());
                             Stage stage = new Stage();
                             stage.setScene(new Scene(root));
                             stage.setTitle(primaryStage.getTitle());
