@@ -22,7 +22,7 @@
     </padding>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
         <children>
-            <Label fx:id="mainLabel" layoutX="89.0" layoutY="11.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="282.0" text="AthleteWear" textAlignment="CENTER" textFill="#e8a735">
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="59.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="282.0" text="AthleteWear" textAlignment="CENTER" textFill="#e8a735">
                 <font>
                     <Font name="MV Boli" size="37.0" />
                 </font>

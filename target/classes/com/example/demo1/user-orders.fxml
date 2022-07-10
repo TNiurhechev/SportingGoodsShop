@@ -16,7 +16,7 @@
 
 </AnchorPane>-->
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AdminOrderController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="525.0" prefWidth="600.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UserOrdersController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -29,38 +29,38 @@
             </Label>
         </children>
     </AnchorPane>
-   <Label fx:id="orderInfoLabel" text="Select an order to remove">
-      <font>
-         <Font name="System Bold" size="14.0" />
-      </font>
-   </Label>
+    <Label fx:id="infoLabel" text="Your orders:">
+        <font>
+            <Font name="System Bold" size="14.0" />
+        </font>
+    </Label>
     <TableView fx:id="ordersTable" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="500.0">
         <columns>
             <TableColumn fx:id="idColumn" prefWidth="41.599974036216736" text="ID" />
             <TableColumn fx:id="vendorCodeColumn" prefWidth="122.40003204345703" text="Vendor code" />
-            <TableColumn fx:id="customerColumn" prefWidth="135.20001220703125" text="Customer" />
-         <TableColumn fx:id="addressColumn" prefWidth="120.0" text="Address" />
-         <TableColumn fx:id="priceColumn" prefWidth="79.20001220703125" text="Price" />
+            <TableColumn fx:id="customerColumn" prefWidth="138.39996337890625" text="Customer" />
+            <TableColumn fx:id="addressColumn" prefWidth="116.79998779296875" text="Address" />
+         <TableColumn fx:id="priceColumn" prefWidth="79.19998168945312" text="Price" />
         </columns>
     </TableView>
     <AnchorPane prefHeight="200.0" prefWidth="200.0">
         <children>
-            <Button fx:id="removeOrderButton" layoutX="161.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Remove">
+            <Button fx:id="cancelOrderButton" layoutX="136.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="97.0" style="-fx-background-radius: 50;" text="Cancel Order">
                 <font>
                     <Font name="System Bold" size="12.0" />
                 </font>
             </Button>
-         <Button fx:id="returnButton" layoutX="334.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Back">
-            <font>
-               <Font name="System Bold" size="12.0" />
-            </font>
-         </Button>
-         <Label fx:id="logLabel" layoutX="216.0" layoutY="24.0" text="Logged in as " textFill="#c8000a">
+            <Button fx:id="returnButton" layoutX="328.0" layoutY="1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="71.0" style="-fx-background-radius: 50;" text="Back">
+                <font>
+                    <Font name="System Bold" size="12.0" />
+                </font>
+            </Button>
+         <Label fx:id="logLabel" layoutX="211.0" layoutY="30.0" text="Logged in as " textFill="#c8000a">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <Label fx:id="nicknameLabel" layoutX="304.0" layoutY="24.0" text="User" textFill="#602eff">
+         <Label fx:id="nicknameLabel" layoutX="298.0" layoutY="30.0" text="User" textFill="#602eff">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>

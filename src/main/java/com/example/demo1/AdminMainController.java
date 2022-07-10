@@ -182,7 +182,7 @@ public class AdminMainController {
                 Parent root = (Parent)loader.load();
                 Stage stage = new Stage();
                 stage.setScene(new Scene(root));
-                stage.setTitle("AW Shop Manager 2.0.0");
+                stage.setTitle(AppVersion.getCurrentVersion());
                 stage.show();
                 primaryStage.hide();
             }

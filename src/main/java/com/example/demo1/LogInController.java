@@ -61,7 +61,8 @@ public class LogInController {
                                 adminMainController.setNickname(nicknameTextField.getText());
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
-                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 2.0.0");
+                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+
+                                        " | "+AppVersion.getCurrentVersion());
                                 stage.show();
                                 primaryStage.hide();
                             }
@@ -76,7 +77,8 @@ public class LogInController {
                                 userMainController.setNickname(nicknameTextField.getText());
                                 Stage stage = new Stage();
                                 stage.setScene(new Scene(root));
-                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+" | AW Shop Manager 2.0.0");
+                                stage.setTitle("Logged in as "+this.nicknameTextField.getText()+
+                                        " | "+AppVersion.getCurrentVersion());
                                 stage.show();
                                 primaryStage.hide();
                             } catch (Exception ex) {

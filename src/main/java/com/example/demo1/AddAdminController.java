@@ -51,6 +51,9 @@ public class AddAdminController {
     private Button signInButton;
 
     @FXML
+    private Button returnButton;
+
+    @FXML
     private Label logLabel;
 
     @FXML
@@ -99,6 +102,24 @@ public class AddAdminController {
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        returnButton.setOnAction(event->{
+            Stage primaryStage = (Stage)signInButton.getScene().getWindow();
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
+                Parent root = (Parent)loader.load();
+                AdminMainController adminMainController = loader.getController();
+                adminMainController.setNickname(nicknameLabel1.getText());
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
+                stage.show();
+                primaryStage.hide();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
             }
         });
     }

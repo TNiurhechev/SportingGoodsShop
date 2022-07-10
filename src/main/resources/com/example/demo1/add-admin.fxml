@@ -16,7 +16,7 @@
 
 </AnchorPane>-->
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddAdminController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="400.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.AddAdminController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
@@ -47,19 +47,20 @@
         </font>
     </Label>
     <PasswordField fx:id="passwordConfirmField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-background-radius: 10;" />
-    <Button fx:id="signInButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-radius: 50;" text="Add" />
    <AnchorPane prefHeight="200.0" prefWidth="200.0">
       <children>
-         <Label fx:id="logLabel" layoutX="111.0" text="Logged in as " textFill="#c8000a">
+         <Label fx:id="logLabel" layoutX="109.0" layoutY="27.0" text="Logged in as " textFill="#c8000a">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
-         <Label fx:id="nicknameLabel1" layoutX="199.0" text="User" textFill="#602eff">
+         <Label fx:id="nicknameLabel1" layoutX="197.0" layoutY="27.0" text="User" textFill="#602eff">
             <font>
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
+          <Button fx:id="signInButton" layoutX="59.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-radius: 50;" text="Add" />
+         <Button fx:id="returnButton" layoutX="189.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="113.0" style="-fx-background-radius: 50;" text="Back" />
       </children>
    </AnchorPane>
     <Label fx:id="errorLabel" text="Passwords should match!" textFill="RED">

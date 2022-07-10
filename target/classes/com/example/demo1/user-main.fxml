@@ -17,13 +17,13 @@
 
 </AnchorPane>-->
 
-<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UserMainController">
+<VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="800.0" spacing="20.0" style="-fx-background-color: #e2c499;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo1.UserMainController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
     <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="122.0" prefWidth="800.0" style="-fx-background-color: #c8000a;">
         <children>
-            <Label fx:id="mainLabel" layoutX="292.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="282.0" text="AthleteWear" textAlignment="CENTER" textFill="#e8a735">
+            <Label fx:id="mainLabel" alignment="CENTER" layoutX="259.0" layoutY="10.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="101.0" prefWidth="282.0" text="AthleteWear" textAlignment="CENTER" textFill="#e8a735">
                 <font>
                     <Font name="MV Boli" size="37.0" />
                 </font>
@@ -40,14 +40,29 @@
      </columns>
    </TableView>
    <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-   <AnchorPane fx:id="lowerPane" prefHeight="200.0" prefWidth="200.0">
+   <AnchorPane fx:id="lowerPane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" prefWidth="760.0">
       <children>
          <Button fx:id="orderButton" layoutX="174.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" style="-fx-background-radius: 10;" text="Order">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>
          </Button>
-         <Button fx:id="logOutButton" layoutX="471.0" layoutY="3.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" style="-fx-background-radius: 10;" text="Log out">
+         <Button fx:id="logOutButton" layoutX="459.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" style="-fx-background-radius: 10;" text="Log out">
+            <font>
+               <Font name="System Bold" size="12.0" />
+            </font>
+         </Button>
+         <Label fx:id="logLabel" layoutX="320.0" layoutY="28.0" text="Logged in as " textFill="#c8000a">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="nicknameLabel" layoutX="408.0" layoutY="28.0" text="User" textFill="#602eff">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <Button fx:id="userOrdersButton" layoutX="316.0" layoutY="1.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="127.0" style="-fx-background-radius: 10;" text="My orders">
             <font>
                <Font name="System Bold" size="12.0" />
             </font>

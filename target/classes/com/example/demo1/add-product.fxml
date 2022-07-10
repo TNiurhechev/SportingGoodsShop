@@ -69,6 +69,16 @@
             </font>
          </Label>
          <ImageView fx:id="productImage" fitHeight="150.0" fitWidth="200.0" layoutX="186.0" layoutY="158.0" pickOnBounds="true" preserveRatio="true" />
+         <Label fx:id="nicknameLabel1" layoutX="221.0" layoutY="333.0" text="User" textFill="#602eff">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
+         <Label fx:id="logLabel" layoutX="131.0" layoutY="333.0" text="Logged in as " textFill="#c8000a">
+            <font>
+               <Font name="System Bold" size="14.0" />
+            </font>
+         </Label>
       </children>
    </AnchorPane>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
