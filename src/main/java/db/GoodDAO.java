@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GoodDAO implements DAO{
+public class GoodDAO implements DAO<Good>{
 
     public GoodDAO(){
     }
@@ -77,7 +77,7 @@ public class GoodDAO implements DAO{
     }
 
     @Override
-    public void save(Object o) throws SQLException {
+    public void save(Good g) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -92,7 +92,6 @@ public class GoodDAO implements DAO{
             e.printStackTrace();
         }
 
-        Good g = (Good)o;
         PreparedStatement insertGood = connection.prepareStatement("INSERT INTO " +
                 "Goods(VendorCode,Manufacturer,Model,Size,Price,Image) VALUES (?,?,?,?,?,?)");
         insertGood.setInt(1,g.getVendorCode());
@@ -105,7 +104,7 @@ public class GoodDAO implements DAO{
     }
 
     @Override
-    public void update(Object o, String[] params) {
+    public void update(Good g, String[] params) {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -119,12 +118,11 @@ public class GoodDAO implements DAO{
         catch (SQLException e) {
             e.printStackTrace();
         }
-        Good g = (Good)o;
         //TODO
     }
 
     @Override
-    public void delete(Object o) throws SQLException {
+    public void delete(Good g) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -138,7 +136,6 @@ public class GoodDAO implements DAO{
         catch (SQLException e) {
             e.printStackTrace();
         }
-        Good g = (Good) o;
         PreparedStatement deleteGood = connection.prepareStatement("DELETE FROM Goods" +
                 " WHERE VendorCode=?");
         deleteGood.setInt(1,g.getVendorCode());

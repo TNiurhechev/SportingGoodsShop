@@ -6,7 +6,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDao implements DAO{
+public class OrderDao implements DAO<Order>{
 
     private Connection getConnection(){
         DBManager dbManager = new DBManager("localhost:3306","root","12345678","shoppingmanager");
@@ -69,7 +69,7 @@ public class OrderDao implements DAO{
     }
 
     @Override
-    public void save(Object o) throws SQLException {
+    public void save(Order o) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -82,18 +82,17 @@ public class OrderDao implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        Order ord = (Order)o;
         PreparedStatement insertOrder = connection.prepareStatement("INSERT INTO " +
                 "Orders(Customer,Address,VendorCode,Price) VALUES (?,?,?,?)");
-        insertOrder.setString(1,ord.getCustomer());
-        insertOrder.setString(2,ord.getAddress());
-        insertOrder.setInt(3,ord.getVendorCode());
-        insertOrder.setInt(4,ord.getPrice());
+        insertOrder.setString(1,o.getCustomer());
+        insertOrder.setString(2,o.getAddress());
+        insertOrder.setInt(3,o.getVendorCode());
+        insertOrder.setInt(4,o.getPrice());
         insertOrder.executeUpdate();
     }
 
     @Override
-    public void update(Object o, String[] params) {
+    public void update(Order o, String[] params) {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -106,12 +105,11 @@ public class OrderDao implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        Order ord = (Order) o;
         //TODO
     }
 
     @Override
-    public void delete(Object o) throws SQLException {
+    public void delete(Order o) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -124,10 +122,9 @@ public class OrderDao implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        Order ord = (Order)o;
         PreparedStatement deleteOrder = connection.prepareStatement("DELETE FROM Orders" +
                 " WHERE Id=?");
-        deleteOrder.setInt(1,ord.getId());
+        deleteOrder.setInt(1,o.getId());
         deleteOrder.executeUpdate();
     }
 }

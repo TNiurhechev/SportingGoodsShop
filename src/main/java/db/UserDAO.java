@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UserDAO implements DAO{
+public class UserDAO implements DAO<User>{
 
     private Connection getConnection(){
         DBManager dbManager = new DBManager("localhost:3306","root","12345678","shoppingmanager");
@@ -64,7 +64,7 @@ public class UserDAO implements DAO{
     }
 
     @Override
-    public void save(Object o) throws SQLException {
+    public void save(User u) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -76,7 +76,6 @@ public class UserDAO implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        User u = (User)o;
         PreparedStatement insertUser = connection.prepareStatement("INSERT INTO " +
                 "Users(Nickname,Password,isAdmin) VALUES (?,?,?)");
         insertUser.setString(1,u.getNickname());
@@ -86,7 +85,7 @@ public class UserDAO implements DAO{
     }
 
     @Override
-    public void update(Object o, String[] params) {
+    public void update(User u, String[] params) {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -98,12 +97,11 @@ public class UserDAO implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        User u = (User)o;
         //TODO
     }
 
     @Override
-    public void delete(Object o) throws SQLException {
+    public void delete(User u) throws SQLException {
         Connection connection = getConnection();
         try {
             Statement statement = connection.createStatement();
@@ -115,7 +113,6 @@ public class UserDAO implements DAO{
         catch(SQLException e){
             e.printStackTrace();
         }
-        User u = (User)o;
         PreparedStatement deleteUser = connection.prepareStatement("DELETE FROM Users" +
                 " WHERE Nickname=?");
         deleteUser.setString(1,u.getNickname());
