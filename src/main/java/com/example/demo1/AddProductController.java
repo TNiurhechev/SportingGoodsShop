@@ -27,6 +27,9 @@ public class AddProductController {
     private Button addProductButton;
 
     @FXML
+    private Button returnButton;
+
+    @FXML
     private Label appLabel;
 
     @FXML
@@ -122,6 +125,24 @@ public class AddProductController {
                 e.printStackTrace();
             }
             Stage primaryStage = (Stage)addProductButton.getScene().getWindow();
+            try{
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
+                Parent root = (Parent)loader.load();
+                AdminMainController adminMainController = loader.getController();
+                adminMainController.setNickname(nicknameLabel1.getText());
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.setTitle(primaryStage.getTitle());
+                stage.show();
+                primaryStage.hide();
+            }
+            catch(Exception ex){
+                ex.printStackTrace();
+            }
+        });
+
+        returnButton.setOnAction(event->{
+            Stage primaryStage = (Stage)browseButton.getScene().getWindow();
             try{
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("admin-main.fxml"));
                 Parent root = (Parent)loader.load();

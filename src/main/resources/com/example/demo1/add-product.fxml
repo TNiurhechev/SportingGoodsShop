@@ -61,8 +61,8 @@
             </font>
          </Label>
          <TextField fx:id="priceTextField" layoutX="10.0" layoutY="164.0" maxWidth="-Infinity" style="-fx-background-radius: 10;" />
-          <Button fx:id="addProductButton" layoutX="86.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-radius: 50;" text="Add" />
-         <Button fx:id="browseButton" layoutX="236.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 50;" text="Browse" />
+          <Button fx:id="addProductButton" layoutX="29.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="100.0" style="-fx-background-radius: 50;" text="Add" />
+         <Button fx:id="browseButton" layoutX="159.0" layoutY="307.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 50;" text="Browse" />
          <Label fx:id="imageLabel" layoutX="189.0" layoutY="132.0" text="Image">
             <font>
                <Font name="System Bold" size="16.0" />
@@ -79,6 +79,7 @@
                <Font name="System Bold" size="14.0" />
             </font>
          </Label>
+         <Button fx:id="returnButton" layoutX="277.0" layoutY="308.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="83.0" style="-fx-background-radius: 50;" text="Back" />
       </children>
    </AnchorPane>
     <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="400.0" style="-fx-background-color: #c8000a;">
